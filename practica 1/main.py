@@ -46,6 +46,7 @@ class App:
         self.ventana = root
 
         self.nombre = StringVar()
+        self.Nombre = StringVar()
         self.contrasenia = StringVar()
 
         self.dibujarFrames()
@@ -100,7 +101,7 @@ class App:
                                     font=("", 16))
         self.lbl_bienbenida.place(x=225, y=10, width=150)
 
-        self.lbl_Nombre = Label(self.F_principal, foreground="white", background="#314252", textvariable=self.nombre,
+        self.lbl_Nombre = Label(self.F_principal, foreground="white", background="#314252", textvariable=self.Nombre,
                                 font=("", 16))
         self.lbl_Nombre.place(x=225, y=60, width=150)
 
@@ -151,8 +152,9 @@ class App:
             self.nombre=""
             self.contrasenia=""
         else:
-            self.nombre=self.return_Auth
+            self.Nombre.set(self.return_Auth)
             BorrarBoton(self.frame_Auth)
+            self.dibujarLabels()
 
 
     def frameConsultar(self):
