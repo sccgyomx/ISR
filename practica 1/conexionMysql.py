@@ -24,8 +24,18 @@ class DataBase:
         users = self.cursor.fetchall()
         for user in users:
             print("Nombre de usuario: ", user[1])
+        return users
 
     def actualizar(self,nombre,nuevo_nombre):
         sql ="update users set username = '{}' where username = '{}'".format(nuevo_nombre,nombre)
         self.cursor.execute(sql)
         self.conn.commit()
+
+
+    def buscar(self,nombre):
+        sql =  "SELECT * FROM users WHERE username =%s"
+        self.cursor.execute(sql,nombre)
+        users = self.cursor.fetchall()
+        for user in users:
+            print("Nombre de usuario: ", user[1])
+        return users
