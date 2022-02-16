@@ -16,14 +16,11 @@ class DataBase:
         sql = """insert into users (username,passwd) values (%s,%s)"""
         self.cursor.execute(sql,(username,passwd))
         self.conn.commit()
-        print("ingresado correctamente")
 
     def mostrar(self):
         sql = "select * from users"
         self.cursor.execute(sql)
         users = self.cursor.fetchall()
-        for user in users:
-            print("Nombre de usuario: ", user[1])
         return users
 
     def actualizar(self,nombre,nuevo_nombre):
@@ -36,6 +33,4 @@ class DataBase:
         sql =  "SELECT * FROM users WHERE username =%s"
         self.cursor.execute(sql,nombre)
         users = self.cursor.fetchall()
-        for user in users:
-            print("Nombre de usuario: ", user[1])
         return users
